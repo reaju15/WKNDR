@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 import requests
-import requests
 import googlemaps
 from numpy import place
 from urllib.parse import unquote
@@ -10,7 +9,7 @@ from transformers import logging
 logging.set_verbosity_error()
 from transformers import pipeline
 from pprint import pprint
-import json
+
 
 
 
