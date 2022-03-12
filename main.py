@@ -1,23 +1,17 @@
-import sys
 from unittest import result
 from flask import Flask, render_template, request, redirect, url_for
-import requests, json, os
+import requests
 import requests
 import googlemaps
-import random
 from numpy import place
 from urllib.parse import unquote
 from sqlalchemy import JSON
 from transformers import BertTokenizer, BertForNextSentencePrediction, AutoTokenizer, AutoModelForMaskedLM
 from transformers import logging
 logging.set_verbosity_error()
-# import torch
 from transformers import pipeline
 from pprint import pprint
 import json
-from tabulate import tabulate
-from json2html import *
-import pandas as pd
 
 
 
