@@ -1,9 +1,7 @@
-from calendar import HTMLCalendar
 import sys
 from unittest import result
 from flask import Flask, render_template, request, redirect, url_for
 import requests, json, os
-from datetime import datetime, timedelta
 import requests
 import googlemaps
 import random
@@ -13,14 +11,11 @@ from sqlalchemy import JSON
 from transformers import BertTokenizer, BertForNextSentencePrediction, AutoTokenizer, AutoModelForMaskedLM
 from transformers import logging
 logging.set_verbosity_error()
-# import torch
 from transformers import pipeline
 from pprint import pprint
 import json
-from tabulate import tabulate
-from json2html import *
 import pandas as pd
-import json2table
+
 
 
 
@@ -44,12 +39,11 @@ def home():
 def login():
     if request.method == 'POST':
         userDataCon = request.form.getlist('nm')
-        pprint(userDataCon)
         userlocation = request.form.getlist('location')
         user = ' and '.join(map(str, userDataCon))
         userlocation = ''.join(map(str, userlocation))
         user = unmasker(f"if you like {user} then you would also like [MASK].")
-        pprint(user)
+
 
 
         one = (user[0]['token_str'] + ' things to do in ' + userlocation)
@@ -91,10 +85,9 @@ def login():
         
         placeIdUrl2 = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId2 + "&key=" + api_key
         placeIdUrl3 = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId3 + "&key=" + api_key
-        print(placeIdUrl2)
+
 
         responsegoogle = requests.request("POST", placeIdUrl1, headers = headers, data=payload)
-        pprint(responsegoogle)
         response_data = responsegoogle.json()
 
     
@@ -185,14 +178,8 @@ def inte():
         if openNow == "False":
             openNow = "Closed right now"
         photo = (finalselect[2])
-        # hoursOp = (finalselect[3])
         website = (finalselect[4])
         address = (finalselect[5])
-        
-
-        # infoFromJson = json.loads(hoursOp)
-        # jsontable=(json2table.convert(infoFromJson))
-
 
 
         pprint(finalselect)
