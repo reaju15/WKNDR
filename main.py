@@ -1,4 +1,6 @@
 import os
+os.environ["CUDA_VISIBLE_DEVICES"]="-1"    
+import tensorflow as tf
 from flask import Flask, render_template, request, redirect, url_for
 import requests
 import googlemaps
