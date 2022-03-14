@@ -1,5 +1,3 @@
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  
 import tensorflow as tf
 from flask import Flask, render_template, request, redirect, url_for
 import requests
@@ -37,12 +35,10 @@ def home():
 def login():
     if request.method == 'POST':
         userDataCon = request.form.getlist('nm')
-        pprint(userDataCon)
         userlocation = request.form.getlist('location')
         user = ' and '.join(map(str, userDataCon))
         userlocation = ''.join(map(str, userlocation))
         user = unmasker(f"if you like {user} then you would also like [MASK].")
-        pprint(user)
 
 
         one = (user[0]['token_str'] + ' things to do in ' + userlocation)
@@ -184,13 +180,9 @@ def inte():
         name = (finalselect[0])
         openNow = (finalselect[1])
         photo = (finalselect[2])
-        # hoursOp = (finalselect[3])
         website = (finalselect[4])
         address = (finalselect[5])
         
-
-        # infoFromJson = json.loads(hoursOp)
-        # jsontable=(json2table.convert(infoFromJson))
 
 
         
