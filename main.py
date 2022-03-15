@@ -1,4 +1,6 @@
 import pandas as pd
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from flask import Flask, render_template, request, redirect, url_for
 import requests
 import googlemaps
@@ -10,6 +12,7 @@ from transformers import logging
 logging.set_verbosity_error()
 from transformers import pipeline
 from pprint import pprint
+
 
 
 
