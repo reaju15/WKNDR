@@ -13,7 +13,6 @@ logging.set_verbosity_error()
 from transformers import pipeline
 from pprint import pprint
 
-import torch.nn as nn
 
 
 
@@ -84,10 +83,8 @@ def login():
         
         placeIdUrl2 = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId2 + "&key=" + api_key
         placeIdUrl3 = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId3 + "&key=" + api_key
-        print(placeIdUrl2)
 
         responsegoogle = requests.request("POST", placeIdUrl1, headers = headers, data=payload)
-        pprint(responsegoogle)
         response_data = responsegoogle.json()
 
     
