@@ -13,6 +13,8 @@ logging.set_verbosity_error()
 from transformers import pipeline
 from pprint import pprint
 
+import torch.nn as nn
+
 
 
 
