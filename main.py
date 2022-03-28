@@ -43,6 +43,9 @@ def login():
         userlocation = ''.join(map(str, userlocation))
         user = unmasker(f"if you like {user} then you would also like [MASK].")
 
+            
+
+
 
         one = (user[0]['token_str'] + ' things to do in ' + userlocation)
         two = (user[1]['token_str'] + ' things to do in ' + userlocation)
@@ -80,7 +83,6 @@ def login():
 
 
         placeIdUrl1 = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId1 + "&key=" + api_key
-        
         placeIdUrl2 = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId2 + "&key=" + api_key
         placeIdUrl3 = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId3 + "&key=" + api_key
 
@@ -89,25 +91,26 @@ def login():
 
     
         
-        weblink1 = "no website available"
         openNow1 = ""
         hoursOp1 = "Check the website if available for the lastest hours"
         address1 = (response_data['result']['formatted_address'])
-        photoLink1 = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930'
+        photoLink1 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
+        weblink1 = (response_data['result']['website'])
+        print(weblink1)
+        photoRef1 = (response_data['result']['photos'][0]['photo_reference'])
+        print(photoRef1)
 
         try:
            openNow1 = (response_data['result']['opening_hours']['open_now'])
+           hoursOp1 = (response_data['result']['opening_hours']['weekday_text'])
+           photoLink1 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef1 + "&key=" + api_key
            if openNow1 == True:
                openNow1 = "Open now"
            else:
                openNow1 = ""
-           hoursOp1 = (response_data['result']['opening_hours']['weekday_text'])
- 
-           weblink1 = (response_data['result']['website'])
-           photoRef1 = (response_data['result']['photos'][0]['photo_reference'])
-           photoLink1 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef1 + "&key=" + api_key
+            
            
-
+           
         except Exception:
             print('error1')
 
@@ -115,23 +118,24 @@ def login():
         responsegoogle = requests.request("POST", placeIdUrl2, headers = headers, data=payload)
         response_data = responsegoogle.json()
 
-        weblink2 = "no website available"
         openNow2 = ""
         hoursOp2 = "Check the website if available for the latest hours"
         address2 = (response_data['result']['formatted_address'])
-        photoLink2 = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930'
+        photoLink2 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
+        weblink2 = (response_data['result']['website'])
+        print(weblink2)
+        photoRef2 = (response_data['result']['photos'][0]['photo_reference'])
+        print(photoRef2)
         
 
         try:
            openNow2 = (response_data['result']['opening_hours']['open_now']) 
+           photoLink2 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef2 + "&key=" + api_key
            if openNow2 == True:
                openNow2 = "Open now"
            else:
                openNow2 = ""
-           weblink2 = (response_data['result']['website'])
-           hoursOp2 = (response_data['result']['opening_hours']['weekday_text'])
-           photoRef2 = (response_data['result']['photos'][0]['photo_reference'])
-           photoLink2 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef2 + "&key=" + api_key
+
 
 
         except Exception:
@@ -143,23 +147,24 @@ def login():
 
         
         
-        weblink3 = "no website available"
         hoursOp3 ="Check website if available for the latest hours"
         openNow3 = ""
         address3 = (response_data['result']['formatted_address'])
-        photoLink3 = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930'
+        photoLink3 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
+        weblink3 = (response_data['result']['website'])
+        print(weblink3)
+        photoRef3 = (response_data['result']['photos'][0]['photo_reference'])
+        print(photoRef3)
 
         try:
            hoursOp3 = (response_data['result']['opening_hours']['weekday_text'])
            openNow3 = (response_data['result']['opening_hours']['open_now'])
+           photoLink3 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef3 + "&key=" + api_key
            if openNow3 == True:
                openNow3 = "Open now"
            else:
                openNow3 = ""
-               
-           weblink3 = (response_data['result']['website'])
-           photoRef3 = (response_data['result']['photos'][0]['photo_reference'])
-           photoLink3 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef3 + "&key=" + api_key
+            
 
 
         except Exception:
@@ -183,9 +188,6 @@ def inte():
         photo = (finalselect[2])
         website = (finalselect[4])
         address = (finalselect[5])
-        
-
-
         
 
         return render_template('Result-page.html', finalselect=finalselect, name=name, photo=photo, openNow=openNow, website=website, address=address)
