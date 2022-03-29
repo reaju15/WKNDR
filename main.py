@@ -95,14 +95,16 @@ def login():
         hoursOp1 = "Check the website if available for the lastest hours"
         address1 = (response_data['result']['formatted_address'])
         photoLink1 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
-        weblink1 = (response_data['result']['website'])
+        weblink1 = ""
         print(weblink1)
-        photoRef1 = (response_data['result']['photos'][0]['photo_reference'])
+        photoRef1 = ""
         print(photoRef1)
 
         try:
            openNow1 = (response_data['result']['opening_hours']['open_now'])
            hoursOp1 = (response_data['result']['opening_hours']['weekday_text'])
+           weblink1 = (response_data['result']['website'])
+           photoRef1 = (response_data['result']['photos'][0]['photo_reference'])
            photoLink1 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef1 + "&key=" + api_key
            if openNow1 == True:
                openNow1 = "Open now"
@@ -122,19 +124,22 @@ def login():
         hoursOp2 = "Check the website if available for the latest hours"
         address2 = (response_data['result']['formatted_address'])
         photoLink2 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
-        weblink2 = (response_data['result']['website'])
+        weblink2 = ""
         print(weblink2)
-        photoRef2 = (response_data['result']['photos'][0]['photo_reference'])
+        photoRef2 = ""
         print(photoRef2)
         
 
         try:
            openNow2 = (response_data['result']['opening_hours']['open_now']) 
+           
+           photoRef2 = (response_data['result']['photos'][0]['photo_reference'])
            photoLink2 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef2 + "&key=" + api_key
            if openNow2 == True:
                openNow2 = "Open now"
            else:
                openNow2 = ""
+           weblink2 = (response_data['result']['website'])
 
 
 
@@ -151,14 +156,16 @@ def login():
         openNow3 = ""
         address3 = (response_data['result']['formatted_address'])
         photoLink3 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
-        weblink3 = (response_data['result']['website'])
+        weblink3 = ""
         print(weblink3)
-        photoRef3 = (response_data['result']['photos'][0]['photo_reference'])
+        photoRef3 = ""
         print(photoRef3)
 
         try:
            hoursOp3 = (response_data['result']['opening_hours']['weekday_text'])
+           weblink3 = (response_data['result']['website'])
            openNow3 = (response_data['result']['opening_hours']['open_now'])
+           photoRef3 = (response_data['result']['photos'][0]['photo_reference'])
            photoLink3 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef3 + "&key=" + api_key
            if openNow3 == True:
                openNow3 = "Open now"
@@ -175,14 +182,16 @@ def login():
         return render_template('3-results.html', resultsname1=resultsname1, resultsname2 =resultsname2, resultsname3=resultsname3, usr=user, one=one, two=two, three=three, 
         photoLink1=photoLink1, openNow1=openNow1, weblink1=weblink1, hoursOp1=hoursOp1,address1=address1,
         photoLink2=photoLink2, openNow2=openNow2, weblink2=weblink2, hoursOp2=hoursOp2,address2=address2,
-        photoLink3=photoLink3, openNow3=openNow3, weblink3=weblink3, hoursOp3=hoursOp3,address3=address3)
+        photoLink3=photoLink3, openNow3=openNow3, weblink3=weblink3, hoursOp3=hoursOp3,address3=address3, userDataCon=userDataCon)
     else:
         return render_template("Interest-page.html")
  
-@app.route('/iti', methods = ["POST", "GET"])
+@app.route('/results', methods = ["POST", "GET"])
 def inte():
     if request.method == "POST":
         finalselect = request.form.getlist('selected')
+        userSelection = request.form.get('userSelection')
+
         name = (finalselect[0])
         openNow = (finalselect[1])
         photo = (finalselect[2])
@@ -190,8 +199,26 @@ def inte():
         address = (finalselect[5])
         
 
-        return render_template('Result-page.html', finalselect=finalselect, name=name, photo=photo, openNow=openNow, website=website, address=address)
+        return render_template('Result-page.html', finalselect=finalselect, name=name, photo=photo, openNow=openNow, website=website, address=address, userSelection=userSelection)
 
+@app.route('/survey', methods = ["POST", "GET"])
+def sur():
+    if request.method == "POST":
+        finalselect = request.form.getlist('selected')
+
+
+        pprint("=====")
+        pprint(finalselect)
+        
+        nameF = (finalselect[0])
+        photoF = (finalselect[1])
+        websiteF = (finalselect[2])
+        addressF = (finalselect[3])
+        userSelection =  request.form.get('userSelection')
+
+        
+
+        return render_template('survey.html', nameF=nameF, photoF=photoF, websiteF=websiteF, addressF=addressF, userSelection=userSelection)
         
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
