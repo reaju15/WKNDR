@@ -139,7 +139,6 @@ def login():
         photoRef1 = ""
 
         try:
-           openNow1 = (response_data['result']['opening_hours']['open_now'])
            webLink1 = (response_data['result']['website'])
            photoRef1 = (response_data['result']['photos'][0]['photo_reference'])
            photoLink1 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef1 + "&key=" + api_key
@@ -187,7 +186,6 @@ def login():
 
         
         
-        hoursOp3 ="Check website if available for the latest hours"
         openNow3 = ""
         address3 = (response_data['result']['formatted_address'])
         photoLink3 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
@@ -197,9 +195,7 @@ def login():
 
 
         try:
-        #    hoursOp3 = (response_data['result']['opening_hours']['weekday_text'])
            webLink3 = (response_data['result']['website'])
-           openNow3 = (response_data['result']['opening_hours']['open_now'])
            photoRef3 = (response_data['result']['photos'][0]['photo_reference'])
            photoLink3 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef3 + "&key=" + api_key
            openNow3 = (response_data['result']['opening_hours']['open_now'])
