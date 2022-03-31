@@ -16,8 +16,6 @@ from pprint import pprint
 
 
 
-
-
 app = Flask(__name__)
 
 
@@ -41,15 +39,15 @@ def login():
         userlocation = request.form.getlist('location')
         user = ' and '.join(map(str, userDataCon))
         userlocation = ''.join(map(str, userlocation))
-        user = unmasker(f"if you like {user} then you would also like [MASK].")
+        user = unmasker(f"I love {user} and [MASK].")
 
             
 
 
 
-        one = (user[0]['token_str'] + ' things to do in ' + userlocation)
-        two = (user[1]['token_str'] + ' things to do in ' + userlocation)
-        three = (user[2]['token_str'] + ' things to do in ' + userlocation)
+        one = (user[0]['token_str'] + ' things in ' + userlocation)
+        two = (user[1]['token_str'] + ' things in ' + userlocation)
+        three = (user[2]['token_str'] + ' things in ' + userlocation)
 
         query1 = map_client.places(query=one)
         query2 = map_client.places(query=two)
@@ -96,9 +94,9 @@ def login():
         address1 = (response_data['result']['formatted_address'])
         photoLink1 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
         weblink1 = ""
-        print(weblink1)
+
         photoRef1 = ""
-        print(photoRef1)
+  
 
         try:
            openNow1 = (response_data['result']['opening_hours']['open_now'])
@@ -125,16 +123,17 @@ def login():
         address2 = (response_data['result']['formatted_address'])
         photoLink2 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
         weblink2 = ""
-        print(weblink2)
+  
         photoRef2 = ""
-        print(photoRef2)
+
         
 
         try:
-           openNow2 = (response_data['result']['opening_hours']['open_now']) 
            
            photoRef2 = (response_data['result']['photos'][0]['photo_reference'])
            photoLink2 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef2 + "&key=" + api_key
+           openNow2 = (response_data['result']['opening_hours']['open_now']) 
+           weblink2 = (response_data['result']['website'])
            if openNow2 == True:
                openNow2 = "Open now"
            else:
@@ -157,10 +156,8 @@ def login():
         address3 = (response_data['result']['formatted_address'])
         photoLink3 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
         weblink3 = ""
-        print(weblink3)
         photoRef3 = ""
-        print(photoRef3)
-
+ 
         try:
            hoursOp3 = (response_data['result']['opening_hours']['weekday_text'])
            weblink3 = (response_data['result']['website'])
