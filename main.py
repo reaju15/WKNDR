@@ -127,22 +127,22 @@ def login():
         placeIdUrl2 = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId2 + "&key=" + api_key
         placeIdUrl3 = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId3 + "&key=" + api_key
 
-        responsegoogle = requests.request("POST", placeIdUrl1, headers = headers, data=payload)
-        response_data = responsegoogle.json()
+        responsegoogle1 = requests.request("POST", placeIdUrl1, headers = headers, data=payload)
+        response_data1 = responsegoogle1.json()
 
     
         
         openNow1 = ""
-        address1 = (response_data['result']['formatted_address'])
+        address1 = (response_data1['result']['formatted_address'])
         photoLink1 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
         webLink1 = ""
         photoRef1 = ""
 
         try:
-           webLink1 = (response_data['result']['website'])
-           photoRef1 = (response_data['result']['photos'][0]['photo_reference'])
+           webLink1 = (response_data1['result']['website'])
+           photoRef1 = (response_data1['result']['photos'][0]['photo_reference'])
            photoLink1 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef1 + "&key=" + api_key
-           openNow1 = (response_data['result']['opening_hours']['open_now'])
+           openNow1 = (response_data1['result']['opening_hours']['open_now'])
            if openNow1 == True:
                openNow1 = "Open now"
            else:
@@ -154,21 +154,21 @@ def login():
             print('error1')
 
 
-        responsegoogle = requests.request("POST", placeIdUrl2, headers = headers, data=payload)
-        response_data = responsegoogle.json()
+        responsegoogle2 = requests.request("POST", placeIdUrl2, headers = headers, data=payload)
+        response_data2 = responsegoogle2.json()
 
         openNow2 = ""
-        address2 = (response_data['result']['formatted_address'])
+        address2 = (response_data2['result']['formatted_address'])
         photoLink2 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
         webLink2 = ""
         photoRef2 = ""
 
 
         try:
-           photoRef2 = (response_data['result']['photos'][0]['photo_reference'])
+           photoRef2 = (response_data2['result']['photos'][0]['photo_reference'])
            photoLink2 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef2 + "&key=" + api_key
-           webLink2 = (response_data['result']['website'])
-           openNow2 = (response_data['result']['opening_hours']['open_now']) 
+           webLink2 = (response_data2['result']['website'])
+           openNow2 = (response_data2['result']['opening_hours']['open_now']) 
            if openNow2 == True:
                openNow2 = "Open now"
            else:
@@ -181,13 +181,13 @@ def login():
             print('error2')
 
 
-        responsegoogle = requests.request("POST", placeIdUrl3, headers = headers, data=payload)
-        response_data = responsegoogle.json()
+        responsegoogle3 = requests.request("POST", placeIdUrl3, headers = headers, data=payload)
+        response_data3 = responsegoogle3.json()
 
         
         
         openNow3 = ""
-        address3 = (response_data['result']['formatted_address'])
+        address3 = (response_data3['result']['formatted_address'])
         photoLink3 = 'static/images/ab839b129f40850982fdbbaf427a77b23013b8f6422d838e23c23870db3c20f175123a9a7ce6f45e1e81f987223d3f9c3174a64c2b17b7c94e365d_1280.jpg'
         webLink3 = ""
 
@@ -195,10 +195,10 @@ def login():
 
 
         try:
-           webLink3 = (response_data['result']['website'])
-           photoRef3 = (response_data['result']['photos'][0]['photo_reference'])
+           webLink3 = (response_data3['result']['website'])
+           photoRef3 = (response_data3['result']['photos'][0]['photo_reference'])
            photoLink3 = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef3 + "&key=" + api_key
-           openNow3 = (response_data['result']['opening_hours']['open_now'])
+           openNow3 = (response_data3['result']['opening_hours']['open_now'])
            if openNow3 == True:
                openNow3 = "Open now"
            else:
