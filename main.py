@@ -80,7 +80,7 @@ def sur():
 
 
 
-        return render_template('survey.html', nameF=nameF, photoF=photoF, websiteF=websiteF, addressF=addressF, userSelection=userSelection, userLocation=userLocation)
+        return render_template('Survey.html', nameF=nameF, photoF=photoF, websiteF=websiteF, addressF=addressF, userSelection=userSelection, userLocation=userLocation)
         
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
