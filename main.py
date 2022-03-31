@@ -1,12 +1,22 @@
-import bert
+import pandas as pd
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from flask import Flask, render_template, request, redirect, url_for
-from pprint import pp, pprint
+import requests
 import googlemaps
+from numpy import place
+from urllib.parse import unquote
+from sqlalchemy import JSON
+from transformers import BertTokenizer, BertForNextSentencePrediction, AutoTokenizer, AutoModelForMaskedLM
+from transformers import logging
+logging.set_verbosity_error()
+from transformers import pipeline
+from pprint import pprint
+
 
 app = Flask(__name__)
 
 
-<<<<<<< HEAD
 
 api_key= open('apikey.txt').read()
 map_client = googlemaps.Client(api_key)
@@ -61,26 +71,16 @@ def selected(userSelection, userLocation):
 
 
 
-=======
->>>>>>> 3df1ef90554033c8a5fbdf8bf48ef10d17ae6ca3
 @app.route('/')
 def home():
     return render_template("Home.html")
 
 @app.route('/interest', methods=['POST', 'GET'])
-<<<<<<< HEAD
 def login():
     userSelection = ' and '.join(map(str, request.form.getlist('nm')))
     userLocation =  (''.join(map(str, request.form.getlist('location'))))
     if request.method == 'POST':
         selectedData = selected(userSelection, userLocation)
-=======
-def main():
-    userSelection = ' and '.join(map(str, request.form.getlist('nm')))
-    userLocation =  (''.join(map(str, request.form.getlist('location'))))
-    if request.method == 'POST':
-        selectedData = bert.selected(userSelection, userLocation)
->>>>>>> 3df1ef90554033c8a5fbdf8bf48ef10d17ae6ca3
 
         results1 = selectedData[0]
         results2 = selectedData[1]
@@ -106,16 +106,12 @@ def main():
         
 
         return render_template('3-results.html', openNow3=openNow3, openNow2=openNow2, openNow1=openNow1, placeName1=placeName1, placeName2=placeName2, userLocation=userLocation,
-         placeName3=placeName3, address1=address1, address2=address2, address3=address3, photoLink1=photoLink1, webLink1=webLink1, photoLink2=photoLink2, webLink2=webLink2, photoLink3=photoLink3, webLink3=webLink3, userSelection=userSelection)
+         placeName3=placeName3, address1=address1, address2=address2, address3=address3, photoLink1=photoLink1, webLink1=webLink1, photoLink2=photoLink2, webLink2=webLink2, photoLink3=photoLink3, webLink3=webLink3, userSelection=userSelection, userLocation=userLocation)
         
     else:
         return render_template("Interest-page.html")
-<<<<<<< HEAD
 
 
-=======
-    
->>>>>>> 3df1ef90554033c8a5fbdf8bf48ef10d17ae6ca3
 @app.route('/results', methods = ["POST", "GET"])
 def inte():
     if request.method == "POST":
@@ -149,7 +145,6 @@ def sur():
 
 
         return render_template('Survey.html', nameF=nameF, photoF=photoF, websiteF=websiteF, addressF=addressF, userSelection=userSelection, userLocation=userLocation)
-<<<<<<< HEAD
         
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
@@ -337,8 +332,6 @@ if __name__ == "__main__":
         
 
 #         return render_template('Survey.html', nameF=nameF, photoF=photoF, websiteF=websiteF, addressF=addressF, userSelection=userSelection)
-=======
->>>>>>> 3df1ef90554033c8a5fbdf8bf48ef10d17ae6ca3
         
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
