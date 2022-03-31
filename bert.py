@@ -27,14 +27,12 @@ def selected(userSelection, userLocation):
 
     selected = []
     user = unmasker(f"I like {userSelection} and [MASK].")
-    # user = unmasker(f"if you like {userSelection} then you should also try [MASK].")
-    pprint(user)
+
     
     for i in range(3):
         placeName = (map_client.places(query=user[i]['token_str'] + ' things in ' + userLocation).get('results')[i]['name'])
 
-        # results = (map_client.places(query=user[i]['token_str'] + ' things to do in ' + userLocation).get('results')[2])
-        # pprint(results)
+        
         placeId = map_client.places(query=placeName).get('results')[0]["place_id"]
         placeIdUrl = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId + "&key=" + api_key
         response_data = (requests.request("POST", placeIdUrl, headers = headers, data=payload)).json()
@@ -45,11 +43,10 @@ def selected(userSelection, userLocation):
         webLink = ""
         openNow = ""
         webLink = (response_data['result']['website'])
-        pprint(webLink)
+
 
         try:
             webLink = (response_data['result']['website'])
-            pprint(webLink)
             photoRef = (response_data['result']['photos'][0]['photo_reference'])
             photoLink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400' + '&photo_reference=' + photoRef + "&key=" + api_key
             openNow = (response_data['result']['opening_hours']['open_now'])
