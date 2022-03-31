@@ -1,24 +1,12 @@
-import pandas as pd
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+import bert
 from flask import Flask, render_template, request, redirect, url_for
-import requests
+from pprint import pp, pprint
 import googlemaps
-from numpy import place
-from urllib.parse import unquote
-from sqlalchemy import JSON
-from transformers import BertTokenizer, BertForNextSentencePrediction, AutoTokenizer, AutoModelForMaskedLM
-from transformers import logging
-logging.set_verbosity_error()
-from transformers import pipeline
-from pprint import pprint
-
-
-
 
 app = Flask(__name__)
 
 
+<<<<<<< HEAD
 
 api_key= open('apikey.txt').read()
 map_client = googlemaps.Client(api_key)
@@ -73,16 +61,26 @@ def selected(userSelection, userLocation):
 
 
 
+=======
+>>>>>>> 3df1ef90554033c8a5fbdf8bf48ef10d17ae6ca3
 @app.route('/')
 def home():
     return render_template("Home.html")
 
 @app.route('/interest', methods=['POST', 'GET'])
+<<<<<<< HEAD
 def login():
     userSelection = ' and '.join(map(str, request.form.getlist('nm')))
     userLocation =  (''.join(map(str, request.form.getlist('location'))))
     if request.method == 'POST':
         selectedData = selected(userSelection, userLocation)
+=======
+def main():
+    userSelection = ' and '.join(map(str, request.form.getlist('nm')))
+    userLocation =  (''.join(map(str, request.form.getlist('location'))))
+    if request.method == 'POST':
+        selectedData = bert.selected(userSelection, userLocation)
+>>>>>>> 3df1ef90554033c8a5fbdf8bf48ef10d17ae6ca3
 
         results1 = selectedData[0]
         results2 = selectedData[1]
@@ -112,8 +110,12 @@ def login():
         
     else:
         return render_template("Interest-page.html")
+<<<<<<< HEAD
 
 
+=======
+    
+>>>>>>> 3df1ef90554033c8a5fbdf8bf48ef10d17ae6ca3
 @app.route('/results', methods = ["POST", "GET"])
 def inte():
     if request.method == "POST":
@@ -147,6 +149,7 @@ def sur():
 
 
         return render_template('Survey.html', nameF=nameF, photoF=photoF, websiteF=websiteF, addressF=addressF, userSelection=userSelection, userLocation=userLocation)
+<<<<<<< HEAD
         
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
@@ -334,6 +337,8 @@ if __name__ == "__main__":
         
 
 #         return render_template('Survey.html', nameF=nameF, photoF=photoF, websiteF=websiteF, addressF=addressF, userSelection=userSelection)
+=======
+>>>>>>> 3df1ef90554033c8a5fbdf8bf48ef10d17ae6ca3
         
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
