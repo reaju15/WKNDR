@@ -141,6 +141,7 @@
                 <input type="hidden" name="selected" class="selected" id="web" value="{{websiteF}}">
                 <input type="hidden" name="selected" class="selected" id="address" value="{{addressF}}">
                 <input type="hidden" name="selected" class="selected" id="userSelection" value="{{userSelection}}">
+                <input type="hidden" name="selected" class="selected" id="userLocation" value="{{userLocation}}">
 
                 <div class="u-form-group u-form-textarea u-form-group-8">
                   <label for="improvements" class="u-label u-label-8">How can WKNDR be improved?</label>
@@ -235,6 +236,7 @@
         var resultsSatisfaction = form.querySelector("#resultsSatisfaction").value;
         var improvements = form.querySelector('#improvements').value;
         var email = form.querySelector("#email").value;
+        var userLocation = form.querySelector("#userLocation").value;
 
         const toSendToFirebaseObject = {
           place_name: name, 
@@ -250,7 +252,8 @@
           interestSatisfaction: interestSatisfaction,
           resultsSatisfaction: resultsSatisfaction,
           imporvements: improvements,
-          email: email
+          email: email,
+          userLocation: userLocation
         }
 
         var id = "id:" + Math.random().toString(16).slice(2)

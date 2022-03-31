@@ -15,7 +15,7 @@ def home():
 @app.route('/interest', methods=['POST', 'GET'])
 def main():
     userSelection = ' and '.join(map(str, request.form.getlist('nm')))
-    userLocation =  ''.join(map(str, request.form.getlist('location')))
+    userLocation =  (''.join(map(str, request.form.getlist('location'))))
     if request.method == 'POST':
         selectedData = bert.selected(userSelection, userLocation)
 
@@ -42,8 +42,8 @@ def main():
         webLink3 = results3["webLink"]
         
 
-        return render_template('3-results.html', openNow3=openNow3, openNow2=openNow2, openNow1=openNow1, placeName1=placeName1, placeName2=placeName2,
-         placeName3=placeName3, address1=address1, address2=address2, address3=address3, photoLink1=photoLink1, webLink1=webLink1, photoLink2=photoLink2, webLink2=webLink2, photoLink3=photoLink3, webLink3=webLink3)
+        return render_template('3-results.html', openNow3=openNow3, openNow2=openNow2, openNow1=openNow1, placeName1=placeName1, placeName2=placeName2, userLocation=userLocation,
+         placeName3=placeName3, address1=address1, address2=address2, address3=address3, photoLink1=photoLink1, webLink1=webLink1, photoLink2=photoLink2, webLink2=webLink2, photoLink3=photoLink3, webLink3=webLink3, userSelection=userSelection)
         
     else:
         return render_template("Interest-page.html")
@@ -53,6 +53,7 @@ def inte():
     if request.method == "POST":
         finalselect = request.form.getlist('selected')
         userSelection = request.form.get('userSelection')
+        userLocation=  request.form.get('userLocation')
         
         nameF = (finalselect[0])
         openNowF = (finalselect[1])
@@ -61,7 +62,7 @@ def inte():
         websiteF = (finalselect[4])
         addressF = (finalselect[5])
 
-        return render_template('Result-page.html', finalselect=finalselect, name=nameF, photo=photoF, openNow=openNowF, hoursOp=hoursOpF, website=websiteF, address=addressF, userSelection=userSelection)
+        return render_template('Result-page.html', finalselect=finalselect, name=nameF, photo=photoF, openNow=openNowF, hoursOp=hoursOpF, website=websiteF, address=addressF, userSelection=userSelection, userLocation=userLocation)
 
 @app.route('/survey', methods = ["POST", "GET"])
 def sur():
@@ -74,9 +75,12 @@ def sur():
         websiteF = (finalselect[2])
         addressF = (finalselect[3])
         userSelection =  request.form.get('userSelection')
+        userLocation=  request.form.get('userLocation')
+        
 
 
-        return render_template('survey.html', nameF=nameF, photoF=photoF, websiteF=websiteF, addressF=addressF, userSelection=userSelection)
+
+        return render_template('survey.html', nameF=nameF, photoF=photoF, websiteF=websiteF, addressF=addressF, userSelection=userSelection, userLocation=userLocation)
         
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
