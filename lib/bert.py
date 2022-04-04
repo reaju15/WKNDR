@@ -26,7 +26,7 @@ def selected(userSelection, userLocation):
     headers = {}
 
     selected = []
-    user = unmasker(f"I like {userSelection} and [MASK].")
+    user = unmasker(f"I love {userSelection} and [MASK].")
 
     
     for i in range(3):
