@@ -83,4 +83,4 @@ def sur():
         return render_template('Survey.html', name=nameF, photo=photoF, website=websiteF, address=addressF, userSelection=userSelection, userLocation=userLocation)
         
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=8080)
