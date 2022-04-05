@@ -15,8 +15,6 @@ from pprint import pprint
 
 
 
-app = Flask(__name__)
-
 
 def selected(userSelection, userLocation):
     api_key= open('apikey.txt').read()

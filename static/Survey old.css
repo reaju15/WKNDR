@@ -3,7 +3,7 @@
 }
 
 .u-section-1 .u-sheet-1 {
-  min-height: 1490px;
+  min-height: 1418px;
 }
 
 .u-section-1 .u-group-1 {
@@ -18,13 +18,17 @@
 }
 
 .u-section-1 .u-text-1 {
-  font-size: 1.875rem;
+  font-size: 3rem;
   margin: 0 15px 0 0;
 }
 
 .u-section-1 .u-form-1 {
-  height: 1008px;
-  margin: 40px 25px 0 0;
+  height: 422px;
+<<<<<<< HEAD
+  margin: 20px 25px 0 0;
+=======
+  margin: 45px 25px 0 0;
+>>>>>>> 1ca4fdfc7fce23d26bde36ac6ca4bb318dc03527
 }
 
 .u-section-1 .u-form-group-1 {
@@ -105,11 +109,37 @@
   background-image: none;
 }
 
+.u-section-1 .u-form-group-7 {
+  margin-left: 0;
+}
+
 .u-section-1 .u-label-7 {
   font-size: 1.25rem;
 }
 
 .u-section-1 .u-input-7 {
+  font-size: 1.25rem;
+  background-image: none;
+}
+
+.u-section-1 .u-form-group-8 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-8 {
+  font-size: 1.25rem;
+}
+
+.u-section-1 .u-input-8 {
+  font-size: 1.25rem;
+  background-image: none;
+}
+
+.u-section-1 .u-label-9 {
+  font-size: 1.25rem;
+}
+
+.u-section-1 .u-input-9 {
   font-size: 1.25rem;
   background-image: none;
 }
@@ -126,6 +156,19 @@
 @media (max-width: 1199px) {
   .u-section-1 .u-sheet-1 {
     min-height: 1298px;
+<<<<<<< HEAD
+  }
+
+  .u-section-1 .u-group-1 {
+    width: 719px;
+    height: auto;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 2.25rem;
+  }
+
+=======
   }
 
   .u-section-1 .u-group-1 {
@@ -136,6 +179,7 @@
     font-size: 2.25rem;
   }
 
+>>>>>>> 1ca4fdfc7fce23d26bde36ac6ca4bb318dc03527
   .u-section-1 .u-form-1 {
     margin-right: initial;
     margin-left: initial;
@@ -145,6 +189,10 @@
 @media (max-width: 991px) {
   .u-section-1 .u-sheet-1 {
     min-height: 1531px;
+  }
+
+  .u-section-1 .u-group-1 {
+    margin-top: 70px;
   }
 
   .u-section-1 .u-container-layout-1 {
@@ -211,6 +259,22 @@
   }
 
   .u-section-1 .u-input-7 {
+    font-size: 1.5rem;
+  }
+
+  .u-section-1 .u-label-8 {
+    font-size: 1.5rem;
+  }
+
+  .u-section-1 .u-input-8 {
+    font-size: 1.5rem;
+  }
+
+  .u-section-1 .u-label-9 {
+    font-size: 1.5rem;
+  }
+
+  .u-section-1 .u-input-9 {
     font-size: 1.5rem;
   }
 }
@@ -285,6 +349,22 @@
   .u-section-1 .u-input-7 {
     font-size: 0.875rem;
   }
+
+  .u-section-1 .u-label-8 {
+    font-size: 0.875rem;
+  }
+
+  .u-section-1 .u-input-8 {
+    font-size: 0.875rem;
+  }
+
+  .u-section-1 .u-label-9 {
+    font-size: 0.875rem;
+  }
+
+  .u-section-1 .u-input-9 {
+    font-size: 0.875rem;
+  }
 }
 
 @media (max-width: 575px) {
@@ -293,6 +373,7 @@
   }
 
   .u-section-1 .u-group-1 {
+    min-height: 1120px;
     margin-right: initial;
     margin-left: initial;
     width: auto;

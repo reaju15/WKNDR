@@ -26,14 +26,14 @@ unmasker = pipeline('fill-mask', model='bert-base-uncased')
 payload = {}
 headers = {}
 def selected(userSelection, userLocation):
-    # api_key= open('apikey.txt').read()
-    # map_client = googlemaps.Client(api_key)
-    # unmasker = pipeline('fill-mask', model='bert-base-uncased')
-    # payload = {}
-    # headers = {}
+    api_key= open('apikey.txt').read()
+    map_client = googlemaps.Client(api_key)
+    unmasker = pipeline('fill-mask', model='bert-base-uncased')
+    payload = {}
+    headers = {}
 
     selected = []
-    user = unmasker(f"I like {userSelection} and [MASK].")
+    user = unmasker(f"I Love {userSelection} and [MASK].")
 
     
     for i in range(3):
