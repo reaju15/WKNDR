@@ -1,4 +1,4 @@
-import bert
+import bert as bert
 from flask import Flask, render_template, request, redirect, url_for
 from pprint import pp, pprint
 import googlemaps

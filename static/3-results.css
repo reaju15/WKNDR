@@ -36,10 +36,11 @@
 }
 
 .u-section-1 .u-text-1 {
-  font-weight: normal;
+  font-weight: small;
   text-transform: none;
   font-style: normal;
   margin: 20px auto 0;
+  font-size: 36px;
 }
 
 .u-section-1 .u-text-2 {
@@ -71,6 +72,7 @@
   text-transform: none;
   font-style: normal;
   margin: 20px auto 0;
+  font-size: 36px;
 }
 
 .u-section-1 .u-text-4 {
@@ -102,6 +104,7 @@
   text-transform: none;
   font-style: normal;
   margin: 20px auto 0;
+  font-size: 36px;
 }
 
 .u-section-1 .u-text-6 {
