@@ -1,0 +1,28 @@
+    swagger: "2.0"
+    info:
+      title: my-apigateway
+      description: "getting selections"
+      version: "1.0.0"
+    host: wkndr
+    schemes:
+      - "https"
+    paths:
+      "/wkndr":
+        get:
+          description: "getting selections"
+          operationId: "wkndr gateway"
+          x-google-backend:
+            address: https://us-central1-wkndr1.cloudfunctions.net/backend-function/
+          parameters:
+            -
+              name: iataCode
+              in: query
+              required: true
+              type: string
+          responses:
+            200:
+              description: "Success."
+              schema:
+                type: string
+            400:
+              description: "The IATA code is invalid or missing."
