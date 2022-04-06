@@ -15,10 +15,6 @@ from pprint import pprint
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 628c48a46b4bc2d6b9986cd2a64ad86468a8a1b1
 def selected(userSelection, userLocation):
     api_key= open('apikey.txt').read()
     map_client = googlemaps.Client(api_key)
