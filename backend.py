@@ -24,7 +24,7 @@ def selected(userSelection, userLocation):
     
 
     for i in range(3):
-        placeName = (map_client.places(query=userSelection[i] + ' things in ' + userLocation).get('results')[i]['name'])        
+        placeName = (map_client.places(query=userSelection[i] + ' things in ' + userLocation).get('results')[0]['name'])        
         placeId = map_client.places(query=placeName).get('results')[0]["place_id"]
         placeIdUrl = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId + "&key=" + api_key
         response_data = (requests.request("POST", placeIdUrl, headers = headers, data=payload)).json()
