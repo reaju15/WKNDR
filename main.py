@@ -1,4 +1,4 @@
-import bert as bert
+import backend as backend
 from flask import Flask, render_template, request, redirect, url_for
 from pprint import pp, pprint
 import googlemaps
@@ -17,7 +17,7 @@ def main():
     userSelection = ' and '.join(map(str, request.form.getlist('nm')))
     userLocation =  (''.join(map(str, request.form.getlist('location'))))
     if request.method == 'POST':
-        selectedData = bert.selected(userSelection, userLocation)
+        selectedData = backend.selected(userSelection, userLocation)
 
         results1 = selectedData[0]
         results2 = selectedData[1]
