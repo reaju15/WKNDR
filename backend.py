@@ -18,15 +18,13 @@ from pprint import pprint
 def selected(userSelection, userLocation):
     api_key= open('apikey.txt').read()
     map_client = googlemaps.Client(api_key)
-    unmasker = pipeline('fill-mask', model='bert-base-uncased')
     payload = {}
     headers = {}
     selected = []
-    user = unmasker(f"I love {userSelection} and [MASK].")
-
     
+
     for i in range(3):
-        placeName = (map_client.places(query=user[i]['token_str'] + ' things in ' + userLocation).get('results')[i]['name'])        
+        placeName = (map_client.places(query=userSelection[i] + ' things in ' + userLocation).get('results')[i]['name'])        
         placeId = map_client.places(query=placeName).get('results')[0]["place_id"]
         placeIdUrl = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId + "&key=" + api_key
         response_data = (requests.request("POST", placeIdUrl, headers = headers, data=payload)).json()
