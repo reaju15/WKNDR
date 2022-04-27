@@ -7,13 +7,14 @@
 }
 
 .u-section-1 .u-text-1 {
-  font-weight: 700;
+  font-weight: bold;
   margin: 52px auto 0;
 }
 
 .u-section-1 .u-form-1 {
-  height: 359px;
-  margin: 33px auto 60px;
+  height: 354px;
+  margin-top: 33px;
+  margin-bottom: 60px;
 }
 
 .u-section-1 .u-form-group-1 {
@@ -81,15 +82,7 @@
 }
 
 .u-section-1 .u-btn-1 {
-  background-image: none;
   border-style: none;
   font-weight: 700;
   box-shadow: 0 2px 8px 0 rgba(128,128,128,1);
-}
-
-@media (max-width: 1199px) {
-  .u-section-1 .u-form-1 {
-    margin-right: initial;
-    margin-left: initial;
-  }
 }
