@@ -39,7 +39,7 @@
           <div class="u-container-layout u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-1">
             <h1 class="u-align-center u-text u-text-custom-color-2 u-text-1"> With your help, we can make WKNDR a valuable platform for you! </h1>
             <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-form u-form-1">
-              <form action="thankyou" method="POST" id="form" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form-1" style="padding: 5px;">
+              <form action="#" method="POST" id="form" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form-1" style="padding: 5px;">
                 <div class="u-form-group u-form-select u-form-group-1">
                   <label for="select-74f9" class="u-label u-label-1">How likely is it that you would recommend WKNDR to a friend or family? (1=Not at all, 10=Definitely)</label>
                   <div class="u-form-select-wrapper">
@@ -111,9 +111,7 @@
                  <button type="submit" value="submit" id="addBtn" class="u-active-custom-color-1 u-border-none u-btn u-btn-submit u-button-style u-custom-color-2 u-custom-font u-heading-font u-hover-custom-color-1 u-btn-1">Submit</button>
                 </div>
                 
-                <!-- <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-                <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div> -->
-                <!-- <input type="hidden" value="" name="recaptchaResponse"> -->
+              
               </form>
             </div>
           </div>
@@ -156,7 +154,6 @@
     
     
         
-        const addBtn = document.getElementById("addBtn");
     
         addBtn.addEventListener('click', (e) => {
             
@@ -192,13 +189,8 @@
           set(ref(database, "NewShortSurey/" + id ), {
               toSendToFirebaseObject
           });
+          window.location.href=("https://zsyp4s7b3q.us-east-1.awsapprunner.com/thankyou");
       });
-
-      addBtn.addEventListener('click', (e) => {
-        window.location.href="https://fgwbx2fjxm.us-east-1.awsapprunner.com/Thank-You-Page.html";  
-      })
-  
-
   </script>
   </body>
 </html>
