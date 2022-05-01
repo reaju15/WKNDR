@@ -8,7 +8,7 @@
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Survey</title>
     <link rel="stylesheet" href="static/nicepage.css" media="screen">
-<link rel="stylesheet" href="static/Survey.css" media="screen">
+    <link rel="stylesheet" href="static/Survey.css" media="screen">
     <script class="u-script" type="text/javascript" src="JS/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="JS/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 4.9.5, nicepage.com">
@@ -111,7 +111,6 @@
                  <button type="submit" value="submit" id="addBtn" class="u-active-custom-color-1 u-border-none u-btn u-btn-submit u-button-style u-custom-color-2 u-custom-font u-heading-font u-hover-custom-color-1 u-btn-1">Submit</button>
                 </div>
                 
-              
               </form>
             </div>
           </div>
@@ -124,73 +123,83 @@
         <p class="u-custom-font u-font-montserrat u-small-text u-text u-text-variant u-text-1">WKNDR<br>"Where To Next?"<br>Created by Stamford Startup Studio<br><span class="u-file-icon u-icon"><img src="images/2658057.png" alt=""></span>&nbsp;2022&nbsp;
         </p>
       </div></footer>
+ 
   <script type="module" type="text/javascript">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
-    
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyD5Fz9NuZCNetEg-urRJcAGoUY2maBJtD0",
-          authDomain: "wkndr-2b16e.firebaseapp.com",
-          projectId: "wkndr-2b16e",
-          storageBucket: "wkndr-2b16e.appspot.com",
-          messagingSenderId: "360092113935",
-          appId: "1:360092113935:web:a2aa812a0a4d5fe538977a",
-          measurementId: "G-TM923CGGBG"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-    
-        const database = getDatabase(app);
-    
-    
-    
+         
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+      import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+      // import {v4 as uuidv4} from 'uuid';
+
+
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyD5Fz9NuZCNetEg-urRJcAGoUY2maBJtD0",
+        authDomain: "wkndr-2b16e.firebaseapp.com",
+        projectId: "wkndr-2b16e",
+        storageBucket: "wkndr-2b16e.appspot.com",
+        messagingSenderId: "360092113935",
+        appId: "1:360092113935:web:a2aa812a0a4d5fe538977a",
+        measurementId: "G-TM923CGGBG"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      const database = getDatabase(app);
+
+
+      addBtn.addEventListener('click', (e) => {
+                
+        
+          const toSendToFirebaseObject = {
+            place_name: form.querySelector('#name').value, 
+            web: form.querySelector('#web').value, 
+            photo_link: form.querySelector('#photo').value, 
+            Address: form.querySelector('#address').value, 
+            user_selection: form.querySelector('#userSelection').value, 
+            howEasy: form.querySelector("#howEasy").value,
+            recommend_Wkndr: form.querySelector('#recommend').value,
+            resultsSatisfaction: form.querySelector("#resultsSatisfaction").value,
+            improvements: form.querySelector('#improvements').value,
+            email: form.querySelector("#email").value,
+            userLocation: form.querySelector("#userLocation").value
+          }
+
+
+
+          e.preventDefault();
+          // let id = uuidv4();
+          // console.out("id= " + id)
+          var id = "id:" + Math.random().toString(16).slice(2)
+
+          set(ref(database, "NewShortSurvey/" + id ), {
+              toSendToFirebaseObject
+          })
+          .then(() => {
+            // Data saved successfully!
+            window.location.href= "https://zsyp4s7b3q.us-east-1.awsapprunner.com/thankyou";
+              console.log('success');
+          })
+          .catch((error) => {
+            console.log('Data could not be saved.' + error);
+            // The write failed...
+          });
+
+
+      });
+              
         
     
-        addBtn.addEventListener('click', (e) => {
-            
-            
-          var name = form.querySelector('#name').value;
-          var web = form.querySelector('#web').value;
-          var photo = form.querySelector('#photo').value;
-          var address = form.querySelector('#address').value;
-          var userSelection = form.querySelector('#userSelection').value;
-          var howEasy = form.querySelector("#howEasy").value;
-          var recommendWkndr = form.querySelector('#recommend').value;
-          var resultsSatisfaction = form.querySelector("#resultsSatisfaction").value;
-          var improvements = form.querySelector('#improvements').value;
-          var email = form.querySelector("#email").value;
-          var userLocation = form.querySelector("#userLocation").value;
-  
-          const toSendToFirebaseObject = {
-            place_name: name, 
-            web: web, 
-            photo_link: photo, 
-            Address: address, 
-            user_selection: userSelection, 
-            howEasy: howEasy,
-            recommend_Wkndr: recommendWkndr,
-            resultsSatisfaction: resultsSatisfaction,
-            improvements: improvements,
-            email: email,
-            userLocation: userLocation
-          }
-  
-          var id = "id:" + Math.random().toString(16).slice(2)
-          e.preventDefault();
-          set(ref(database, "NewShortSurey/" + id ), {
-              toSendToFirebaseObject
-          });
-          window.location.href=("https://zsyp4s7b3q.us-east-1.awsapprunner.com/thankyou");
-      });
+        
+
+        
   </script>
   </body>
 </html>
